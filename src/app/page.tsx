@@ -72,23 +72,23 @@ export default function HomePage() {
           <Card 
             title="Residential" 
             subtitle="Build"
-            image="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=800"
+            image="/images/residential.png"
           >
             Custom luxury villas and high-rise apartments designed for durability.
           </Card>
           <Card 
-            title="Commercial" 
-            subtitle="Build"
-            image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+            title="Interior" 
+            subtitle="Design"
+            image="/images/interior.png"
           >
-            Office complexes, retail centers, and industrial warehouses.
+            Elegant interior fit-out with high-end furniture, lighting, and finishes.
           </Card>
           <Card 
-            title="Infrastructure" 
-            subtitle="Public"
-            image="https://images.unsplash.com/photo-1574127244093-21bfe993096d?auto=format&fit=crop&q=80&w=800"
+            title="Architecture" 
+            subtitle="Planning"
+            image="/images/architecture.png"
           >
-            Bridges, highways, and specialized civil engineering works.
+            Thoughtful architectural planning for landmark projects and sustainable communities.
           </Card>
         </div>
       </Section>
