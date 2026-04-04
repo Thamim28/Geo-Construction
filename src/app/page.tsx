@@ -5,19 +5,16 @@ import { Card } from "@/components/Card";
 import { Button } from "@/components/Button";
 import { Badge } from "@/components/Badge";
 import { CostCalculator } from "@/components/CostCalculator";
-import { 
-  Building2, 
-  HardHat, 
-  Hammer, 
-  ShieldCheck, 
+import {
+  Building2,
+  HardHat,
+  ShieldCheck,
   TrendingUp,
-  CheckCircle2, 
-  Zap,
-  Globe,
+  CheckCircle2,
   ArrowRight
 } from "lucide-react";
+import { PackagesSection } from "@/components/PackagesSection";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export default function HomePage() {
   return (
@@ -25,22 +22,12 @@ export default function HomePage() {
       {/* Hero Section */}
       <Hero />
 
-      {/* Stats Section */}
-      <div className="relative z-30 -mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-brand-black rounded-[2rem] shadow-2xl p-10 border border-white/5">
-          <StatItem icon={<Building2 className="text-brand-yellow" />} label="Projects Completed" value="450+" />
-          <StatItem icon={<HardHat className="text-brand-yellow" />} label="Happy Clients" value="1.2k" />
-          <StatItem icon={<TrendingUp className="text-brand-yellow" />} label="Growth Rate" value="25%" />
-          <StatItem icon={<ShieldCheck className="text-brand-yellow" />} label="Safety Rating" value="99.9%" />
-        </div>
-      </div>
-
       {/* About Section */}
       <Section id="about" title="Crafting Excellence Since 2010" subtitle="Our Legacy" center={false}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-8">
             <p className="text-xl text-slate-600 leading-relaxed font-medium">
-              Geo Construction was founded on the principles of integrity, quality, and innovation. 
+              Geo Construction was founded on the principles of integrity, quality, and innovation.
               Over the last 15 years, we have grown into a leading infrastructure group.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
@@ -57,14 +44,24 @@ export default function HomePage() {
           </div>
           <div className="relative group">
             <div className="absolute -inset-6 bg-brand-yellow/10 rounded-[3rem] -rotate-3 group-hover:rotate-0 transition-transform duration-700" />
-            <img 
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1000" 
-              alt="Engineers discussing plans" 
+            <img
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1000"
+              alt="Engineers discussing plans"
               className="relative rounded-[2rem] shadow-2xl w-full h-[600px] object-cover"
             />
           </div>
         </div>
       </Section>
+
+      {/* Stats Section */}
+      <div className="relative z-30 -mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-brand-black rounded-[2rem] shadow-2xl p-10 border border-white/5">
+          <StatItem icon={<Building2 className="text-brand-yellow" />} label="Projects Completed" value="450+" />
+          <StatItem icon={<HardHat className="text-brand-yellow" />} label="Happy Clients" value="1.2k" />
+          <StatItem icon={<TrendingUp className="text-brand-yellow" />} label="Growth Rate" value="25%" />
+          <StatItem icon={<ShieldCheck className="text-brand-yellow" />} label="Safety Rating" value="99.9%" />
+        </div>
+      </div>
 
       {/* Core Services Section */}
       <Section variant="dark" title="Our Core Expertise" subtitle="Capability" center={true}>
@@ -95,30 +92,7 @@ export default function HomePage() {
 
       {/* Packages Section */}
       <Section id="packages" variant="white" title="Choose Your Build Grade" subtitle="Packages" center={true}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          <PricingCard 
-            title="Standard" 
-            price="1,500" 
-            features={["Quality Foundation", "Eco Materials", "12 Month Warranty"]}
-            icon={<Hammer className="text-brand-yellow" />}
-            color="black"
-          />
-          <PricingCard 
-            title="Premium" 
-            price="2,200" 
-            features={["Reinforced Structure", "Modern Finishes", "3D Visualization"]}
-            icon={<Zap className="text-brand-black" />}
-            color="yellow"
-            isPopular={true}
-          />
-          <PricingCard 
-            title="Executive" 
-            price="3,500" 
-            features={["High-End Luxury", "Smart Integration", "Lifetime Support"]}
-            icon={<Globe className="text-brand-yellow" />}
-            color="black"
-          />
-        </div>
+        <PackagesSection />
         
         {/* Estimator Integration */}
         <div className="pt-20">
@@ -192,44 +166,3 @@ function FeatureItem({ text }: { text: string }) {
   );
 }
 
-function PricingCard({ title, price, features, icon, color, isPopular }: { title: string; price: string; features: string[]; icon: React.ReactNode; color: "black" | "yellow"; isPopular?: boolean }) {
-  const colors = {
-    yellow: "bg-brand-yellow text-brand-black",
-    black: "bg-brand-black text-white",
-  };
-  
-  return (
-    <div className={cn(
-      "relative p-10 rounded-[2.5rem] border transition-all duration-500 hover:scale-105",
-      colors[color],
-      color === "yellow" ? "border-brand-yellow shadow-2xl shadow-brand-yellow/20" : "border-white/10"
-    )}>
-      {isPopular && (
-        <div className="absolute top-0 right-10 -translate-y-1/2 bg-white text-brand-black text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-lg border border-slate-100">
-          Most Popular
-        </div>
-      )}
-      <div className="mb-8">{icon}</div>
-      <h4 className="text-2xl font-black uppercase tracking-tighter mb-2">{title}</h4>
-      <div className="flex items-baseline space-x-1 mb-8">
-        <span className="text-xs font-black uppercase tracking-widest opacity-60">from</span>
-        <span className="text-4xl font-black">${price}</span>
-        <span className="text-[10px] font-black uppercase tracking-widest opacity-40">/sqft</span>
-      </div>
-      <ul className="space-y-4 mb-10">
-        {features.map((f) => (
-          <li key={f} className="flex items-center text-xs font-bold uppercase tracking-wide opacity-80">
-            <CheckCircle2 size={16} className="mr-3 shrink-0" />
-            {f}
-          </li>
-        ))}
-      </ul>
-      <Button 
-        variant={color === "black" ? "secondary" : "primary"} 
-        className="w-full py-6 font-black uppercase tracking-widest text-xs rounded-xl"
-      >
-        Select Plan
-      </Button>
-    </div>
-  );
-}
