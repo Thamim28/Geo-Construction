@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
 import { Badge } from "@/components/Badge";
@@ -73,14 +74,30 @@ export default function ProjectsPage() {
   const filterOptions: ProjectCategory[] = ["All", "Residential", "Commercial", "Industrial", "Ongoing", "Completed"];
 
   return (
-    <div className="pt-20">
-      {/* Projects Title */}
-      <Section variant="white" title="Our Architectural Legacy" subtitle="Portfolio" center={true} className="pb-10">
-        <p className="max-w-2xl mx-auto text-slate-600 text-lg font-medium">
-          Explore our diverse range of engineering masterpieces, from sustainable housing 
-          to complex industrial infrastructures.
-        </p>
-      </Section>
+    <div className="pt-0">
+      {/* Projects Hero */}
+      <section className="relative min-h-[640px] overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero_images/projects-hero.png"
+            alt="Projects hero"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-slate-950/55" />
+        </div>
+
+        <div className="relative z-10 flex min-h-[640px] flex-col justify-center px-6 py-28 sm:px-10 lg:px-20">
+          <span className="text-sm font-black uppercase tracking-[0.35em] text-brand-yellow">Portfolio</span>
+          <h1 className="mt-4 max-w-3xl text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
+            Our Architectural Legacy
+          </h1>
+          <p className="mt-6 max-w-2xl text-base md:text-lg text-white/80 font-medium">
+            Explore our diverse range of engineering masterpieces, from sustainable housing to complex industrial infrastructures.
+          </p>
+        </div>
+      </section>
 
       {/* Filter Bar */}
       <div className="sticky top-16 z-40 bg-white/90 backdrop-blur-md border-y border-slate-100 py-4 shadow-sm">

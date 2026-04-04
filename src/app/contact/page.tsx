@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { 
@@ -9,7 +10,8 @@ import {
   MapPin, 
   Send, 
   CheckCircle,
-  Building
+  Building,
+  ArrowRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -28,14 +30,29 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="pt-20">
+    <div className="pt-0">
       {/* Contact Hero */}
-      <Section title="Let's Build Together" subtitle="Contact Us" center={true}>
-        <p className="max-w-2xl mx-auto text-slate-600 text-lg font-medium">
-          Ready to turn your vision into a concrete reality? Our team of engineering 
-          experts and architects is standing by.
-        </p>
-      </Section>
+      <section className="relative min-h-[640px] overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero_images/contact-hero.png"
+            alt="Contact hero"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-slate-950/55" />
+        </div>
+        <div className="relative z-10 flex min-h-[640px] flex-col justify-center px-6 py-28 sm:px-10 lg:px-20">
+          <span className="text-sm font-black uppercase tracking-[0.35em] text-brand-yellow">Contact Us</span>
+          <h1 className="mt-4 max-w-3xl text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
+            Let's Build Together
+          </h1>
+          <p className="mt-6 max-w-2xl text-base md:text-lg text-white/80 font-medium">
+            Ready to turn your vision into a concrete reality? Our team of engineering experts and architects is standing by.
+          </p>
+        </div>
+      </section>
 
       <Section className="pt-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -193,5 +210,3 @@ function FormGroup({ label, placeholder, type = "text", required = false }: { la
     </div>
   );
 }
-
-import { ArrowRight } from "lucide-react";
